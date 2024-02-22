@@ -21,6 +21,6 @@ public class Stack {
             throw new ArrayIndexOutOfBoundsException();
         }
         ind--;
-        return array[ind+1];
+        return array[ind];
     }
 }
