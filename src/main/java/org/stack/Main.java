@@ -8,28 +8,30 @@ public class Main {
         System.out.print("Enter array length: ");
         Stack stack = new Stack(scanner.nextInt());
         while (true){
-            System.out.println("Choose operation: push or pop? Enter exit for leave");
+            System.out.print("Choose operation: push or pop? Enter 'exit' for leave. ");
             switch (scanner.next()){
                 case "push":
+                    if (stack.isFull()){
+                        System.out.println("Stack is full");
+                        break;
+                    }
                     System.out.print("Enter number: ");
                     int response = stack.push(scanner.nextInt());
                     if (response == 0){
-                        System.out.println("Data has been push");
-                    } else if (response == -1){
-                        System.out.println("Stack is full");
+                        System.out.println("Data has been pushed");
                     }
                     break;
                 case "pop":
-                    try {
-                        System.out.println(stack.pop());
-                    } catch (ArrayIndexOutOfBoundsException e){
+                    if (stack.isEmpty()){
                         System.out.println("Stack is empty");
+                        break;
                     }
+                    System.out.println(stack.pop());
                     break;
                 case "exit":
                     return;
                 default:
-                    System.out.println("Wrong type!");
+                    System.out.println("Wrong input!");
                     break;
             }
         }

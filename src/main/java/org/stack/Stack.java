@@ -2,25 +2,34 @@ package org.stack;
 
 public class Stack {
     private int[] array;
-    private int ind = 0;
+    private int ind;
     public Stack(int length){
         array = new int[length];
+        ind = length - 1;
     }
 
     public int push(int data){
-        if (ind == array.length){
-            return -1;
-        }
         array[ind] = data;
-        ind++;
+        ind--;
         return 0;
     }
 
     public int pop(){
-        if (ind == 0){
-            throw new ArrayIndexOutOfBoundsException();
-        }
-        ind--;
+        ind++;
         return array[ind];
+    }
+
+    public boolean isEmpty(){
+        if (ind == array.length){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isFull(){
+        if (ind == -1){
+            return true;
+        }
+        return false;
     }
 }
